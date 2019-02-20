@@ -8,6 +8,7 @@ public class LembretesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LembretesApplication.class, args);
+		
 	}
 
 }

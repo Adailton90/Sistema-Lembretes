@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" 
+		xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Cadastro de Pessoa</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      		rel="stylesheet">
+      		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+		
+		<style >
+			#cadastros {
+				background-color: #151515;
+				box-shadow:5px 5px 0 #D3D3D3 ;
+				color: white;
+				padding: 10px;
+				margin:20px; padding-top:15px;
+				width: 610px;
+				height: 150px;
+			}
+			input {margin-left: 10px;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form action="@/listaPessoa" method="post">
+				<div id="cadastros">
+					<p>Nome: <input style="width:520px;" type="text" value="" name="nome"/></p>
+					Data de Nascimento: <input type="date" value="" name="nascimento"/>			
+					Salário: <input type="number" name="salario" step="any" />
+					<button type="submit" class="btn btn-light" title="Salvar">Salvar</button>
+					<input type="button" value="Voltar" class="btn btn-light" onClick="history.go(-1)" title="Voltar"><!-- voltar para pagina anterior --> 	
+				</div>
+			</form>	
+		</div>
+	</body>
+	
+</html>
