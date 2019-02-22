@@ -38,8 +38,10 @@ public class LembreteController {
 	@GetMapping("/listarLembretes")
 	public ModelAndView listarLembretes() {
 		ModelAndView retorno = new ModelAndView("View/listaLembrete");
-		///retorno.addObject("listaLembrete", repository.findAll());//dando nome ao objeto e metodo de trazer todos 
+		retorno.addObject("listaLembrete", repository.findAll());//dando nome ao objeto e metodo de trazer todos 
 		return retorno;
 	}
+	
+	
 	
 }
