@@ -1,11 +1,15 @@
 package com.example.lembretes.Controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.lembretes.Model.LembreteEntity;
 import com.example.lembretes.Repository.LembreteRepository;
@@ -23,16 +27,20 @@ public class LembreteController {
 	
 	
 	@GetMapping("/cadastrarLembrete")
-	public ModelAndView cadastrarLembrete() {
-		ModelAndView retorno = new ModelAndView("/View/cadastroLembrete");
-		retorno.addObject("lembrete", new LembreteEntity());
+	public ModelAndView cadastrarLembrete(LembreteEntity lembrete) {
+		ModelAndView retorno = new ModelAndView("View/cadastroLembrete");
+		retorno.addObject("lembrete",lembrete);
 		return retorno;
 	}
 	
 	@PostMapping
-	public ModelAndView cadastrarLembrete(LembreteEntity lembrete) {
+	public ModelAndView cadastrarLembrete(@Valid LembreteEntity lembrete, BindingResult result) {
+		
+		if(result.hasErrors()) {			
+			return cadastrarLembrete(lembrete);
+		}
 		repository.save(lembrete);
-		return new ModelAndView("redirect:/cadastrarLembrete");
+		return new ModelAndView("/cadastrarLembrete");
 	}
 	
 	@GetMapping("/listarLembretes")

@@ -11,17 +11,26 @@
 				margin: 30px;					
 			}
 			i{size: 7px}
+			#link{text-decoration: none; color:white;}
+			.obrigatório:after{content:" (Campo obrigatório)"}
 		</style>
 	</head>
 	<body>		
-		<form action="@/cadastrarLembrete" method="post">
+		<form th:action="@{/cadastrarLembrete}" method="post" th:object="${lembrete}">
+		
+		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+				<div th:each="detailedlErrors : ${#fields.detailedErrors()}">
+					<span th:text="${detailedlErrors.message}"></span>
+				</div>		
+			</div> 
+		
 		  	 <div class="form-group">
-			    <label for="exampleFormControlInput1">Título</label>
-			    <input type="text" class="form-control" name="titulo" placeholder="Escreva o título do lembrete">
+			    <label for="exampleFormControlInput1" class="obrigatório">Título</label>
+			    <input type="text" class="form-control"name="titulo" placeholder="Escreva o título do lembrete">
 			  </div>
 			  
 			  <div class="form-group">
-			    <label for="exampleFormControlInput1">Data do Lembrete</label>
+			    <label for="exampleFormControlInput1" class="obrigatório">Data do Lembrete</label>
 			    <input type="date" class="form-control" name="data_lembrete">
 			  </div>
 			  
@@ -30,7 +39,7 @@
 			    <textarea class="form-control" name="descricao" rows="3"></textarea>
 			  </div>
 			  <button type="submit" class="btn btn-primary">Salvar</button>
-			  <a href="/listarLembretes"><i class="material-icons" title="Listar Lembretes">format_list_bulleted</i>
+			  <button class="btn btn-primary"><a id="link" href="/listarLembretes">Listar Lembretes</a></button>
 			 		  
 		</form>
 		

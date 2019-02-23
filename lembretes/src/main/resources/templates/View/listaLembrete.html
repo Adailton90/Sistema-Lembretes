@@ -11,9 +11,8 @@
 		
 		<style>
 			body{
-				margin: 30px;				
-			}
-			a:link {text-decoration: none;}
+				margin: 30px;			
+			}			
 			table{text:#D3D3D3}
 			table tr:hover td {background-color:#D3D3D3;}
 			span{text:black;}
@@ -26,21 +25,20 @@
 			      <th scope="col">Codigo</th>
 			      <th scope="col">Título</th>
 			      <th scope="col">Data do Lembrete</th>
-			      <!--<th scope="col">Descrição</th>-->
+			      <th scope="col">Descrição</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			    <tr th:each="lembrete : ${listaLembrete}">
 			    	<td th:text="${lembrete.codigo}"></td>
-						<td><a th:href="@{/{codigo}(codigo=${lembrete.codigo})}"><span th:text="${lembrete.titulo}"></span></a></td>								
-						<td th:text="${#dates.format(lembrete.data_lembrete, 'dd-MM-yyyy')}"></td>
-						<!-- <td th:text="${lembrete.descricao}"></td> -->
-									    
+					<td th:text="${lembrete.titulo}"></td>								
+					<td th:text="${#dates.format(lembrete.data_lembrete, 'dd-MM-yyyy')}"></td>
+					<td th:text="${lembrete.descricao}"></td>									    
 				 </tr>
 			     
 			  </tbody>
 		</table>
-		<i class="material-icons" onClick="history.go(-1)" title="Voltar">fast_rewind</i>
+		<button class="btn btn-primary" onClick="history.go(-1)" title="Voltar">Voltar</button>
 		
 				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

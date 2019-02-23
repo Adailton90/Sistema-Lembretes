@@ -7,23 +7,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class LembreteEntity {
-
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="codigo")
 	private Long codigo;
 	
+	@NotEmpty(message="O Título é obrigatório.")
+	@NotBlank(message="O Título é obrigatório.")
 	@Column(nullable=false, length = 255)
 	private String titulo;
 	
 	@Column(name="descricao", length = 255)
 	private String descricao;
 	
+	@NotNull(message="A data do lembrete é obrigatório.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="data_lembrete",nullable=false)
 	private Date data_lembrete;
