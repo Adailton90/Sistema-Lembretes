@@ -16,14 +16,8 @@
 		</style>
 	</head>
 	<body>		
-		<form th:action="@{/cadastrarLembrete}" method="post" th:object="${lembrete}">
-		
-		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
-				<div th:each="detailedlErrors : ${#fields.detailedErrors()}">
-					<span th:text="${detailedlErrors.message}"></span>
-				</div>		
-			</div> 
-		
+		<form action="/cadastrarLembrete" method="post">		
+	
 		  	 <div class="form-group">
 			    <label for="exampleFormControlInput1" class="obrigatório">Título</label>
 			    <input type="text" class="form-control"name="titulo" placeholder="Escreva o título do lembrete">

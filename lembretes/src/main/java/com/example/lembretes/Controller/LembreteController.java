@@ -27,9 +27,9 @@ public class LembreteController {
 	
 	
 	@GetMapping("/cadastrarLembrete")
-	public ModelAndView cadastrarLembrete(LembreteEntity lembrete) {
+	public ModelAndView cadastrarLembrete() {
 		ModelAndView retorno = new ModelAndView("View/cadastroLembrete");
-		retorno.addObject("lembrete",lembrete);
+		retorno.addObject("lembrete",new LembreteEntity());
 		return retorno;
 	}
 	
@@ -37,10 +37,10 @@ public class LembreteController {
 	public ModelAndView cadastrarLembrete(@Valid LembreteEntity lembrete, BindingResult result) {
 		
 		if(result.hasErrors()) {			
-			return cadastrarLembrete(lembrete);
+			return cadastrarLembrete();
 		}
 		repository.save(lembrete);
-		return new ModelAndView("/cadastrarLembrete");
+		return new ModelAndView("redirect:/cadastrarLembrete");
 	}
 	
 	@GetMapping("/listarLembretes")
